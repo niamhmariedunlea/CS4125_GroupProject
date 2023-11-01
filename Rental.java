@@ -1,5 +1,8 @@
 import java.sql.Date;
 import java.util.concurrent.TimeUnit;
+
+import javax.sound.midi.SysexMessage;
+
 import java.lang.Math;
 
 public class Rental {
@@ -115,6 +118,12 @@ public class Rental {
 
     }
 
+    public void displayInformation(){
+        System.out.println("Rental ID: " + rentalID);
+        System.out.println("Scooter ID: " + scooterID);
+        System.out.println("Start: " +startDate);
+        System.out.println("Cost: " + rentalCost);
+    }
 
 
 }
