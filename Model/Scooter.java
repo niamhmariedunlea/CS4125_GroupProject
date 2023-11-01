@@ -1,3 +1,4 @@
+package Model;
 public class Scooter {
     private int scooterID;
     public Long qrCode;

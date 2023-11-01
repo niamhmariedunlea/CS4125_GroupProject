@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.List;
 
 public class Node {
@@ -44,6 +46,8 @@ public class Node {
     {
         this.availableScooters = availableScooters;
     }
+
+    //Should these be in the controller?
 
     public Boolean rentScooter(int scooterID)
     {
