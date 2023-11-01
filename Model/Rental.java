@@ -1,6 +1,9 @@
 package Model;
+
 import java.sql.Date;
 import java.util.concurrent.TimeUnit;
+
+import javax.sound.midi.SysexMessage;
 import java.lang.Math;
 
 public class Rental {
@@ -116,6 +119,3 @@ public class Rental {
 
     }
 
-
-
-}
