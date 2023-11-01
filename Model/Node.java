@@ -46,6 +46,7 @@ public class Node {
         this.availableScooters = availableScooters;
     }
 
+    //Should these be in the controller?
     public Boolean rentScooter(int scooterID)
     {
         if () {
