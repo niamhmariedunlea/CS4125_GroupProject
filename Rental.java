@@ -118,13 +118,4 @@ public class Rental {
 
     }
 
-    // Niamh added in display info for the rentalView 
-    public void displayInformation(){
-        System.out.println("Rental ID: " + rentalID);
-        System.out.println("Scooter ID: " + scooterID);
-        System.out.println("Start: " +startDate);
-        System.out.println("Cost: " + rentalCost);
-    }
-
-
 }

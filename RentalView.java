@@ -3,28 +3,22 @@
  * Date: October/November 2023
  */
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
 
 public class RentalView {
 public boolean queryRental;
 public boolean updateRental;
-
-private List<Rental> currentRentals;
-
-public RentalView(){
-    currentRentals = new ArrayList<>();
-}
 
 public RentalView(boolean queryRental, boolean updateRental){
     this.queryRental = queryRental;
     this.updateRental = updateRental;
 }
 
-public void displayRentalInformation(){
-    System.out.println("Current rentals: ");
-    for(Rental current : currentRentals){
-        current.displayInformation();
+public void displayRentalInformation(int rentalID, int scooterID, Date startDate, double rentalCost){
+    System.out.println("Current rental: ");
+        System.out.println("Rental ID: " + rentalID);
+        System.out.println("Scooter ID: " + scooterID);
+        System.out.println("Start: " +startDate);
+        System.out.println("Cost: " + rentalCost);
     }
-}
 }
