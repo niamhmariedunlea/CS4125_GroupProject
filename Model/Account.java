@@ -1,3 +1,4 @@
+package Model;
 public class Account {
 
     private int userID;
@@ -64,5 +65,6 @@ public class Account {
     {
         this.lastName = lastName;
     }
+
     
 }
