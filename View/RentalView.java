@@ -9,6 +9,7 @@ public class RentalView {
 public boolean queryRental;
 public boolean updateRental;
 
+
 public RentalView(boolean queryRental, boolean updateRental){
     this.queryRental = queryRental;
     this.updateRental = updateRental;
