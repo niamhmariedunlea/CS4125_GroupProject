@@ -23,7 +23,7 @@ public class NodeView {
         }
 
         // display list of scooters in a location 
-        
+
 
 
         // number of scooters in one node 
