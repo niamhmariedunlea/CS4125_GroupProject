@@ -8,7 +8,7 @@ package View;
 
 import java.util.List;
 
-import Model.Scooter;
+
 
 public class NodeView {
     public int queryNode;
@@ -23,6 +23,7 @@ public class NodeView {
         }
 
         // display list of scooters in a location 
+        
 
 
         // number of scooters in one node 

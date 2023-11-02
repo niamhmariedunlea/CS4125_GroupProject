@@ -3,6 +3,7 @@
  * Author: Niamh Dunlea 
  * Date: October/November 2023
  */
+package View;
 
 public class AccountView extends IUserLogin {
     public boolean queryAccount;

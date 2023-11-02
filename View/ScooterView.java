@@ -3,6 +3,8 @@
  * Date: October/November 2023
  */
 
+package View;
+
 public class ScooterView {
    
     public List<Scooter> displayScooters;
