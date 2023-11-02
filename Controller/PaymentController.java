@@ -3,6 +3,7 @@ package Controller;
 import Model.Payment;
 
 public class PaymentController {
+    private Payment model;
 
     private boolean paymentComplete;
 

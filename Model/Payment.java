@@ -3,10 +3,12 @@ package Model;
 public class Payment {
 
     private double amount;
-    private boolean valid;
 
     public double getMoney() {
         return this.amount;
     }
     
+    public void setMoney(double amount) {
+        this.amount = amount;
+    }
 }
