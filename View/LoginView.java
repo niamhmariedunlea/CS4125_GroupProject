@@ -57,7 +57,7 @@ class Myframe extends JFrame implements ActionListener {
                 String email = user.getText();
                 String pass = user.getText();
 
-                RegisterForm registerForm = new RegisterForm();
+                RegisterView registerForm = new RegisterView();
                 registerForm.setVisible(true);
 
             }
@@ -75,7 +75,7 @@ class Myframe extends JFrame implements ActionListener {
     }
 
 }
-class LoginForm {
+class LoginView {
     public static void main(String args[]) {
         Myframe frame = new Myframe();
 
