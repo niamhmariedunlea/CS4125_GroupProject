@@ -1,84 +1,80 @@
+package View;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 
-class Myframe extends JFrame implements ActionListener {
+public class LoginView {
 
-    Container c;
-    JLabel label1, label2, title;
-    JTextField user;
-    JPasswordField password;
-    JButton loginbtn, registerbtn;
+    private JFrame frame;
+    private JLabel userEmail, userPass, title;
+    private JTextField user;
+    private JPasswordField password;
+    private JButton loginbtn;
 
-    Myframe(){
-        setTitle("Login");
-        setSize(400, 700);
-        setLocation(100, 100);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    public LoginView(){
 
-        c = getContentPane();
-        c.setLayout(null);
+        frame = new JFrame("Escooter Rental"); 
+        frame.setSize(400, 700);
+        frame.setLayout(null);
+        frame.setResizable(false);
+        frame.setLocation(100, 100);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        title = new JLabel("Welcome");
+
+
+        title = new JLabel("Login");
         title.setBounds(90, 150, 300, 100);
         title.setFont(new Font("Calibri", Font.BOLD, 50));
-        c.add(title);
+        frame.add(title);
 
-        label1 = new JLabel("User Email");
-        label1.setFont(new Font("Calibri", Font.BOLD, 25));
-        label2 = new JLabel("Password");
-        label2.setFont(new Font("Calibri", Font.BOLD, 25));
+        userEmail = new JLabel("User Email");
+        userEmail.setFont(new Font("Calibri", Font.BOLD, 25));
+        userEmail.setBounds(10, 300, 120, 30);
+        frame.add(userEmail);
 
-        label1.setBounds(10, 300, 120, 30);
-        label2.setBounds(10, 400, 120, 30);
-
-        c.add(label1);
-        c.add(label2);
+        userPass = new JLabel("Password");
+        userPass.setFont(new Font("Calibri", Font.BOLD, 25));
+        userPass.setBounds(10, 400, 120, 30);
+        frame.add(userPass);
 
         user = new JTextField();
         user.setBounds(160, 300, 200, 45);
-        c.add(user);
+        frame.add(user);
 
         password = new JPasswordField();
         password.setBounds(160, 400, 200, 45);
-        c.add(password);
+        frame.add(password);
 
         loginbtn = new JButton("Login");
         loginbtn.setBounds(50, 500, 140, 50);
-        c.add(loginbtn);
-
+        frame.add(loginbtn);
+ 
+        /* 
         registerbtn = new JButton("Register");
         registerbtn.setBounds(210, 500, 140, 50);
-        c.add(registerbtn);
-        registerbtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0)
-            {
-                String email = user.getText();
-                String pass = user.getText();
+        frame.add(registerbtn);
+        registerbtn.addActionListener(this);
+        */
 
-                RegisterView registerForm = new RegisterView();
-                registerForm.setVisible(true);
-
-            }
-        });
-
-        loginbtn.addActionListener(this);
-        setVisible(true);
+        frame.revalidate();
+        frame.repaint();
     }
 
-    public void actionPerformed(ActionEvent e) {
-
-        System.out.println("User Email: " + user.getText());
-        System.out.println("Password: " + password.getText());
-
+    public String getUserEmail() 
+    {
+        return user.getText();
     }
 
-}
-class LoginView {
-    public static void main(String args[]) {
-        Myframe frame = new Myframe();
-
+    public char[] getUserPassword() 
+    {
+        return password.getPassword();
     }
-    
+
+    public void addLoginButtonListener(ActionListener listener) 
+    {
+        loginbtn.addActionListener(listener);
+    }
+
 }

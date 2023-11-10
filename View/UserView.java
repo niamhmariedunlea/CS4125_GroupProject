@@ -4,7 +4,7 @@
  * Date: October/November 2023
  */
 
-package View;
+
 
 public class UserView extends IUserLogin{
     public displayLogin;
