@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-class RegisterForm extends JFrame implements ActionListener {
+class RegisterView extends JFrame implements ActionListener {
 
     Container c;
     JLabel title, label1, label2, label3, label4;
@@ -11,7 +11,7 @@ class RegisterForm extends JFrame implements ActionListener {
     JPasswordField password;
     JButton registerbtn;
 
-    RegisterForm(){
+    RegisterView(){
         setTitle("Register");
         setSize(400, 700);
         setLocation(100, 100);

@@ -3,8 +3,8 @@
  * Author: Niamh Dunlea 
  * Date: October/November 2023
  */
-package View;
 
+package View;
 public class UserView extends IUserLogin{
     public String displayLogin;
     public String displayRegistration;
