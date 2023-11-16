@@ -1,12 +1,12 @@
-import Controller.LoginController;
-import Model.Login;
-import View.LoginView;
+import Controller.RegisterController;
+import Model.Register;
+import View.RegisterView;
 
 public class Test {
      public static void main(String[] args) {
-        Login model = new Login();
-        LoginView view = new LoginView();
+        Register model = new Register();
+        RegisterView view = new RegisterView();
 
-        LoginController controller = new LoginController(model, view);
+        RegisterController controller = new RegisterController(model, view);
      }
 }
