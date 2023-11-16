@@ -1,29 +1,23 @@
+package View;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 
-class RegisterView extends JFrame implements ActionListener {
+ public class RegisterView extends JFrame {
 
-    Container c;
     JLabel title, label1, label2, label3, label4;
     JTextField user, fname, lname;
     JPasswordField password;
     JButton registerbtn;
 
-    RegisterView(){
-        setTitle("Register");
-        setSize(400, 700);
-        setLocation(100, 100);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
-        c = getContentPane();
-        c.setLayout(null);
+    public RegisterView(){
 
         title = new JLabel("Register");
         title.setBounds(90, 100, 300, 100);
         title.setFont(new Font("Calibri", Font.BOLD, 50));
-        c.add(title);
+        add(title);
 
         label1 = new JLabel("User Email");
         label1.setFont(new Font("Calibri", Font.BOLD, 25));
@@ -40,51 +34,69 @@ class RegisterView extends JFrame implements ActionListener {
         label4.setBounds(10, 500, 120, 30);
 
         
-        c.add(label1);
-        c.add(label2);
-        c.add(label3);
-        c.add(label4);
+        add(label1);
+        add(label2);
+        add(label3);
+        add(label4);
 
 
         user = new JTextField();
         user.setBounds(160, 200, 200, 45);
-        c.add(user);
+        add(user);
 
         password = new JPasswordField();
         password.setBounds(160, 300, 200, 45);
-        c.add(password);
+        add(password);
 
         
         fname = new JTextField();
         fname.setBounds(160, 400, 200, 45);
-        c.add(fname);
+        add(fname);
 
         lname = new JTextField();
         lname.setBounds(160, 500, 200, 45);
-        c.add(lname);
+        add(lname);
 
         registerbtn = new JButton("Register");
         registerbtn.setBounds(50, 600, 240, 50);
-        c.add(registerbtn);
+        add(registerbtn);
 
-
-        registerbtn.addActionListener(this);
+        setSize(400, 700);
+        setLayout(null);
+        setResizable(false);
+        setLocation(100, 100);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
     
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    public String getUserEmail() 
+    {
+        return user.getText();
+    }
 
-        System.out.println("User Email: " + user.getText());
-        System.out.println("Password: " + password.getText());
-        System.out.println("First Name: " + fname.getText());
-        System.out.println("Last Name: " + lname.getText());
+    public char[] getUserPassword() 
+    {
+        return password.getPassword();
+    }
+
+    public String getUserFname()
+    {
+        return fname.getText();
+    }
+
+    public String getUserLname()
+    {
+        return lname.getText();
+    }
+
+    public void updateView(String newData) {
+        user.setText(newData);
+    }
+
+    public void addRegisterButtonListener(ActionListener listener) 
+    {
+        registerbtn.addActionListener(listener);
     }
 }
-/* class RegisterForm {
-    
-    public static void main(String args[]) {
-        Myframe frame = new Myframe();
-    }
-}*/
 

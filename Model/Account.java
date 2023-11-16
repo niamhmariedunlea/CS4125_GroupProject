@@ -7,6 +7,8 @@ public class Account {
     private String firstName;
     private String lastName;
 
+    public Account(){};
+
     public Account(int userID, String ulEmail, String password, String firstName, String lastName)
     {
         this.userID = userID;

@@ -2,27 +2,28 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 
-import Model.Login;
+import Model.Register;
 import View.*;
 
-public class LoginController {
-    
-    private LoginView view;
-    private Login model; 
+public class RegisterController {
 
-    public LoginController(Login model, LoginView view)
+    private RegisterView view;
+    private Register model; 
+
+
+    public RegisterController(Register model, RegisterView view)
     {
         this.model = model;
         this.view = view;
 
-        view.addLoginButtonListener((ActionEvent e) -> 
+        view.addRegisterButtonListener((ActionEvent e) -> 
         {
             view.getUserEmail();
             view.getUserPassword();
 
         });
 
-        view.addLoginButtonListener(e -> handleButtonClick());
+        view.addRegisterButtonListener(e -> handleButtonClick());
     }
 
 
