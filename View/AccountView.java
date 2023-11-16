@@ -19,7 +19,7 @@ import java.awt.event.*;
 
     public AccountView(){
 
-        title = new JLabel("Register");
+        title = new JLabel("Account");
         title.setBounds(90, 100, 300, 100);
         title.setFont(new Font("Calibri", Font.BOLD, 50));
         add(title);
