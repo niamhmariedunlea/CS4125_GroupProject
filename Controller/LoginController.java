@@ -21,6 +21,23 @@ public class LoginController {
             view.getUserPassword();
 
         });
+
+        view.addLoginButtonListener(e -> handleButtonClick());
     }
+
+
+
+    private void handleButtonClick() {
+        // Get user input from the view
+        String userEmail = view.getUserEmail();
+        //String userPass = view.getUserPassword();
+
+        // Update the model
+        model.setEmail(userEmail);
+
+        // Update the view
+        view.updateView(model.getEmail());
+        //view.updateView(model.getPassword());
+}
     
 }
