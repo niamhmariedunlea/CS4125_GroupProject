@@ -3,13 +3,17 @@
  * Date: October/November 2023
  */
 
+package View;
+
+import java.util.ArrayList;
+
 public class ScooterView {
    
-    public List<Scooter> displayScooters;
+    public ArrayList <Scooter> displayScooters;
     public String displayScooterDetails;
-    public enum updateScooter;
-    public displayRentalInformation;
-    public displayReturn;
+    public Status updateScooter;
+    public String displayRentalInformation;
+    public String displayReturn;
 
 
     public void displayScooterInformation(int scooterID, int nodeID, String position){

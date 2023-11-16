@@ -3,11 +3,14 @@
  * Date: October/November 2023
  */
 
+package View;
+
 import java.sql.Date;
 
 public class RentalView {
 public boolean queryRental;
 public boolean updateRental;
+
 
 public RentalView(boolean queryRental, boolean updateRental){
     this.queryRental = queryRental;
