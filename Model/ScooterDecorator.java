@@ -1,23 +1,20 @@
-public abstract class scooterDecorator implements Scooter{
+package Model;
 
-private Scooter decoratedScooter;
+public class ScooterDecorator implements Scooter {
 
-public scooterDecorator(Scooter decoratedScooter){
+    private Scooter decoratedScooter;
+
+    public ScooterDecorator(Scooter decoratedScooter){
     this.decoratedScooter = decoratedScooter;
 }
 
 public float getBatteryLevel(){
-    float batteryLevel = decoratedScooter.getBatteryLevel();
-    // update the controller here?
+    batteryLevel = decoratedScooter.getBatteryLevel();
 
-}
+    float updateBatteryLevel = batteryLevel - (batteryLevel * 0.1f); // decrease battery by 10% 
 
-public void startRental(){
-    decoratedScooter.startRental();
-}
+    return updateBatteryLevel;
 
-public void endRental(){
-    decoratedScooter.endRental();
 }
 
 
