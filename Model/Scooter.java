@@ -8,8 +8,7 @@ public class Scooter {
 
     // used for the battery level 
     private static float fullBatteryLevel = 100.0f;
-    private static float batteryConsumption = 0.2f;
-    private float batteryLevel;
+    public double batteryLevel;
 
 
     private enum Status 
@@ -20,6 +19,12 @@ public class Scooter {
     }  
     
     private Status status;
+
+
+    public Scooter(){
+        
+    }
+
 
     public Scooter(int scooterID, Long qrCode, String currentPosition, Status status)
     {
@@ -80,30 +85,23 @@ public class Scooter {
 
     }
 
-    public float getBatteryLevel(){
+    public double getBatteryLevel(){
         return batteryLevel;
     }
 
     public void startRental(){
         // when a rental is started it should display the battery level and let the user know how long approx they have
-
+        System.out.println("Your rental has started at INSERT DATE TIME HERE ");
 
     }
 
     public void endRental(){
         // ending a rental will calculate the usage and determine if the sscooter should be allowed available or needs to be charged 
-        float rentalUsage = calculateBatteruUsage();
-        batteryConsumption -= rentalUsage;
+        // needs to call decorator? 
 
-        batteryLevel = Math.max(batteryLevel, 0); // don't let the battery go into negative 
-    }
+        System.out.println("Your rental has ended at INSERT DATE TIME HERE ");
 
-    private float calculateBatteruUsage(){
-        // add logic here for what we want to minus off based on the time and speed perhaps? 
-
-
-
-        return batteryConsumption;
+    
     }
 
 }

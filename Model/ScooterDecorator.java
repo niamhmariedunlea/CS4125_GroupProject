@@ -1,22 +1,44 @@
 package Model;
 
-public class ScooterDecorator implements Scooter {
+import java.sql.Date;
 
+public abstract class ScooterDecorator extends Scooter {
+
+    public double batteryLevel;
     private Scooter decoratedScooter;
+    private Date startTime; // from Rental class to get time
+    
 
-    public ScooterDecorator(Scooter decoratedScooter){
-    this.decoratedScooter = decoratedScooter;
+
+public ScooterDecorator(Scooter decoratedScooter, Date startTime){
+this.decoratedScooter = decoratedScooter;
+this.startTime = startTime;
 }
 
-public float getBatteryLevel(){
-    batteryLevel = decoratedScooter.getBatteryLevel();
+public void updateBatteryLevel(double newBatteryLevel){
+this.batteryLevel = newBatteryLevel;
+System.out.println("Battery level is now: " + newBatteryLevel);
+}
 
-    float updateBatteryLevel = batteryLevel - (batteryLevel * 0.1f); // decrease battery by 10% 
+public void endRide(){
+// calculate the battery level based on the duration
 
-    return updateBatteryLevel;
-
+int totalMinutesUsed = calculateMinutes();
+double batteryUsed = 0.1 * totalMinutesUsed;
+double updateBatteryLevel = batteryLevel - batteryUsed;
+updateBatteryLevel(updateBatteryLevel);
 }
 
 
+
+private int calculateMinutes(){
+// calculate duration of rental
+Date endTime = new Date();
+long timeDiffMill = endTime.getTime() - startTime.getTime(); // time in milliseconds 
+long timeDiffMins = timeDiffMill / (60 * 1000); // milliseconds to minutes
+
+return (int) timeDiffMins;
+
+    }
 
 }
