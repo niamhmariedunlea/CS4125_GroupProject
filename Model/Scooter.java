@@ -3,22 +3,17 @@ public class Scooter {
     private int scooterID;
     public Long qrCode;
     private String currentPosition;
+    private ScooterState state;
 
-    private enum Status 
-    {
-        AVAILABLE, 
-        UNAVAILABLE,
-        BROKEN
-    }  
     
     private Status status;
 
-    public Scooter(int scooterID, Long qrCode, String currentPosition, Status status)
+    public Scooter(int scooterID, Long qrCode, String currentPosition, ScooterState state)
     {
         this.scooterID = scooterID;
         this.qrCode = qrCode;
         this.currentPosition = currentPosition;
-        this.status = status;
+        this.state = new AvailableState();
     }
 
     public int getScooterID()
@@ -51,14 +46,12 @@ public class Scooter {
         this.currentPosition = currentPosition;
     }
 
-    public Status getStatus()
-    {
-        return status;
+    public String getStateName() {
+        return state.getStateName();
     }
 
-    public void setStatus(Status status)
-    {
-        this.status = status;
+    public void setState(ScooterState state) {
+        this.state = state;
     }
 
     public int amountOfScooters()
