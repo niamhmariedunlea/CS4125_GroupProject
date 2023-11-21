@@ -3,34 +3,25 @@ public class Scooter {
     private int scooterID;
     public Long qrCode;
     private String currentPosition;
+    private ScooterState state;
+  
     boolean startRental;
     boolean endRental;
 
     // used for the battery level 
     private static float fullBatteryLevel = 100.0f;
     public double batteryLevel;
-
-
-    private enum Status 
-    {
-        AVAILABLE, 
-        UNAVAILABLE,
-        BROKEN
-    }  
     
     private Status status;
 
-
-    public Scooter(){
-        
-    }
-
+    public Scooter(int scooterID, Long qrCode, String currentPosition, ScooterState state)
 
     public Scooter(int scooterID, Long qrCode, String currentPosition, Status status)
     {
         this.scooterID = scooterID;
         this.qrCode = qrCode;
         this.currentPosition = currentPosition;
+        this.state = new AvailableState();
         this.status = status;
         this.batteryLevel = fullBatteryLevel;
     }
@@ -65,14 +56,12 @@ public class Scooter {
         this.currentPosition = currentPosition;
     }
 
-    public Status getStatus()
-    {
-        return status;
+    public String getStateName() {
+        return state.getStateName();
     }
 
-    public void setStatus(Status status)
-    {
-        this.status = status;
+    public void setState(ScooterState state) {
+        this.state = state;
     }
 
     public int amountOfScooters()
