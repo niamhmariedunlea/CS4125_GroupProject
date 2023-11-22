@@ -1,6 +1,9 @@
 package View;
 
 import javax.swing.*;
+
+import Controller.RegisterController;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -11,6 +14,7 @@ import java.awt.event.*;
     JTextField user, fname, lname;
     JPasswordField password;
     JButton registerbtn;
+    RegisterController controller;
 
     public RegisterView(){
 
@@ -60,6 +64,17 @@ import java.awt.event.*;
         registerbtn = new JButton("Register");
         registerbtn.setBounds(50, 600, 240, 50);
         add(registerbtn);
+        registerbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String email = user.getText();
+                String newpassword = new String(password.getPassword());
+                String firstname = fname.getText();
+                String lastname = lname.getText();
+                // Pass the file path to the controller when calling authenticateUser
+                controller.registerUser("account_data.csv", email, newpassword, firstname, lastname);
+            }
+        });
 
         setSize(400, 700);
         setLayout(null);
@@ -93,10 +108,23 @@ import java.awt.event.*;
     public void updateView(String newData) {
         user.setText(newData);
     }
+        
+    public void setController(RegisterController controller) {
+        this.controller = controller;
+    }
+    
 
     public void addRegisterButtonListener(ActionListener listener) 
     {
         registerbtn.addActionListener(listener);
+    }
+
+    public void showRegisterResult(boolean isRegistered) {
+        if (isRegistered) {
+            JOptionPane.showMessageDialog(this, "Registration successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Registration failed. Try Again!.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
 
