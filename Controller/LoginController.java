@@ -1,6 +1,5 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
 
 import Model.Login;
 import View.*;
@@ -14,7 +13,7 @@ public class LoginController {
     {
         this.model = model;
         this.view = view;
-
+/* 
         view.addLoginButtonListener((ActionEvent e) -> 
         {
             view.getUserEmail();
@@ -23,10 +22,11 @@ public class LoginController {
         });
 
         view.addLoginButtonListener(e -> handleButtonClick());
+        */
     }
 
 
-
+/*
     private void handleButtonClick() {
         // Get user input from the view
         String userEmail = view.getUserEmail();
@@ -39,6 +39,7 @@ public class LoginController {
         view.updateView(model.getEmail());
         //view.updateView(model.getPassword());
 }
+*/
 
 public void authenticateUser(String filePath, String email, String password) {
     boolean isAuthenticated = model.authenticateUser(filePath, email, password);

@@ -3,6 +3,7 @@ package View;
 import javax.swing.*;
 
 import Controller.LoginController;
+import View.RegisterView;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -15,6 +16,7 @@ public class LoginView extends JFrame {
     private JPasswordField password;
     private JButton loginbtn, registerbtn;
     private LoginController controller;
+    private RegisterView registerView;
 
     public LoginView(){
 
@@ -58,6 +60,16 @@ public class LoginView extends JFrame {
         registerbtn = new JButton("Register");
         registerbtn.setBounds(210, 500, 140, 50);
         add(registerbtn);
+        registerbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                registerView = new RegisterView();
+                registerView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                registerView.setVisible(true);
+
+            }
+        });
         
 
         //revalidate();
