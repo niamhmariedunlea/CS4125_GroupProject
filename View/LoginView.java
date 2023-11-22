@@ -1,6 +1,9 @@
 package View;
 
 import javax.swing.*;
+
+import Controller.LoginController;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -11,6 +14,7 @@ public class LoginView extends JFrame {
     private JTextField user;
     private JPasswordField password;
     private JButton loginbtn, registerbtn;
+    private LoginController controller;
 
     public LoginView(){
 
@@ -40,6 +44,15 @@ public class LoginView extends JFrame {
         loginbtn = new JButton("Login");
         loginbtn.setBounds(50, 500, 140, 50);
         add(loginbtn);
+        loginbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String email = user.getText();
+                String newpassword = new String(password.getPassword());
+                // Pass the file path to the controller when calling authenticateUser
+                controller.authenticateUser("user_data.csv", email, newpassword);
+            }
+        });
  
          
         registerbtn = new JButton("Register");
@@ -74,6 +87,18 @@ public class LoginView extends JFrame {
     public void addLoginButtonListener(ActionListener listener) 
     {
         loginbtn.addActionListener(listener);
+    }
+
+    public void setController(LoginController controller) {
+        this.controller = controller;
+    }
+
+    public void showLoginResult(boolean isAuthenticated) {
+        if (isAuthenticated) {
+            JOptionPane.showMessageDialog(this, "Login successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Login failed. Invalid email or password.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
 }

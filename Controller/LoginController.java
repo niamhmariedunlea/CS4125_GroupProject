@@ -39,5 +39,10 @@ public class LoginController {
         view.updateView(model.getEmail());
         //view.updateView(model.getPassword());
 }
+
+public void authenticateUser(String filePath, String email, String password) {
+    boolean isAuthenticated = model.authenticateUser(filePath, email, password);
+    view.showLoginResult(isAuthenticated);
+}
     
 }
