@@ -12,11 +12,11 @@ public class Scooter {
     private static float fullBatteryLevel = 100.0f;
     public double batteryLevel;
     
-    private Status status;
+    private String status;
 
-    public Scooter(int scooterID, Long qrCode, String currentPosition, ScooterState state)
+    public Scooter(){};
 
-    public Scooter(int scooterID, Long qrCode, String currentPosition, Status status)
+    public Scooter(int scooterID, Long qrCode, String currentPosition, String status)
     {
         this.scooterID = scooterID;
         this.qrCode = qrCode;
@@ -56,17 +56,24 @@ public class Scooter {
         this.currentPosition = currentPosition;
     }
 
-    public String getStateName() {
-        return state.getStateName();
-    }
-
     public void setState(ScooterState state) {
         this.state = state;
     }
 
-    public int amountOfScooters()
+    public String getStatus()
     {
+        return status;
+    }
 
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
+
+    public void requestStateChange(ScooterState newState) 
+    {
+        setState(newState);
+        state.handleState(this);
     }
 
     public void addScooter()
