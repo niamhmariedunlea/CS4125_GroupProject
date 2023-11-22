@@ -1,5 +1,9 @@
 package Model;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Register {
 
     private String email;
@@ -47,5 +51,19 @@ public class Register {
     {
         this.lname = lname;
     }
-    
+
+    public boolean registerUser(String filePath, String email, String newpassword, String firstname, String lastname) {
+    try (PrintWriter writer = new PrintWriter(new FileWriter(filePath, true))) {
+            // Append user data to the CSV file
+            writer.println(String.format("%s,%s,%s,%s",
+                    email,
+                    newpassword,
+                    firstname,
+                    lastname));
+                    return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

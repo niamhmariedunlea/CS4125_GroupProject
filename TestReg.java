@@ -6,7 +6,7 @@ public class TestReg {
      public static void main(String[] args) {
         Register model = new Register();
         RegisterView view = new RegisterView();
-
         RegisterController controller = new RegisterController(model, view);
+        view.setController(controller);
      }
 }

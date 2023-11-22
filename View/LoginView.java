@@ -3,7 +3,6 @@ package View;
 import javax.swing.*;
 
 import Controller.LoginController;
-import View.RegisterView;
 
 import java.awt.*;
 import java.awt.event.*;

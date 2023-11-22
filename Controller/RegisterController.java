@@ -1,6 +1,9 @@
 package Controller;
 
 import java.awt.event.ActionEvent;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import Model.Register;
 import View.*;
@@ -40,5 +43,10 @@ public class RegisterController {
         view.updateView(model.getEmail());
         //view.updateView(model.getPassword());
 }
-    
+
+public void registerUser(String filePath, String email, String newpassword, String firstname, String lastname) {
+    boolean isRegistered = model.registerUser(filePath, email, newpassword, firstname, lastname);
+    view.showRegisterResult(isRegistered);
+}
+
 }
