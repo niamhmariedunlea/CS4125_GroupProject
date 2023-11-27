@@ -1,49 +1,48 @@
 package Controller;
 
-
-import Model.Login;
-import View.*;
+import Services.LoginService;
+import Services.RegisterService;
+import View.LoginView;
+import View.RegisterView;
 
 public class LoginController {
     
-    private LoginView view;
-    private Login model; 
+    private LoginView view; 
+    private LoginService service;
 
-    public LoginController(Login model, LoginView view)
+    public LoginController(LoginService service, LoginView view)
     {
-        this.model = model;
+        this.service = service;
         this.view = view;
-/* 
-        view.addLoginButtonListener((ActionEvent e) -> 
-        {
-            view.getUserEmail();
-            view.getUserPassword();
+        this.view.setController(this); // Set the controller in the view
+        this.view.addLoginButtonListener(e -> authenticate()); // Add listener for the login button
+        this.view.addRegisterButtonListener(e -> handleRegButtonClick()); // Add listener for the register button
 
-        });
+    }
 
-        view.addLoginButtonListener(e -> handleButtonClick());
-        */
+    public void authenticate() {
+        // Delegate authentication to the LoginService
+        String email = view.getUserEmail();
+        String password = new String(view.getUserPassword());
+        boolean loginResult = service.authenticate(email, password);
+        view.showLoginResult(loginResult);
+    }
+
+    public void setLoginView(LoginView loginView) {
+        this.view = loginView;
     }
 
 
-/*
-    private void handleButtonClick() {
-        // Get user input from the view
-        String userEmail = view.getUserEmail();
-        //String userPass = view.getUserPassword();
+    public void handleRegButtonClick() {
+            RegisterView registerView = new RegisterView();
+            RegisterController registerController = new RegisterController(new RegisterService(), registerView);
+            registerView.setController(registerController);
 
-        // Update the model
-        model.setEmail(userEmail);
+            // Hide the login view
+            view.setVisible(false);
 
-        // Update the view
-        view.updateView(model.getEmail());
-        //view.updateView(model.getPassword());
-}
-*/
-
-public void authenticateUser(String filePath, String email, String password) {
-    boolean isAuthenticated = model.authenticateUser(filePath, email, password);
-    view.showLoginResult(isAuthenticated);
-}
+            // Make the register view visible
+            registerView.setVisible(true);
+    }
     
 }
