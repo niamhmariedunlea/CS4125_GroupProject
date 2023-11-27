@@ -1,11 +1,11 @@
 import Controller.LoginController;
-import Model.Login;
+import Model.Account;
 import View.LoginView;
 
 public class TestLogin {
 
          public static void main(String[] args) {
-            Login model = new Login();
+            Account model = new Account();
             LoginView view = new LoginView();
             LoginController controller = new LoginController(model, view);
             view.setController(controller);

@@ -15,7 +15,7 @@ public class LoginView extends JFrame {
     private JPasswordField password;
     private JButton loginbtn, registerbtn;
     private LoginController controller;
-    private RegisterView registerView;
+
 
     public LoginView(){
 
@@ -48,10 +48,7 @@ public class LoginView extends JFrame {
         loginbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String email = user.getText();
-                String newpassword = new String(password.getPassword());
-                // Pass the file path to the controller when calling authenticateUser
-                controller.authenticateUser("user_data.csv", email, newpassword);
+                controller.authenticate();
             }
         });
  
@@ -62,15 +59,17 @@ public class LoginView extends JFrame {
         registerbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /* 
                 dispose();
                 registerView = new RegisterView();
                 registerView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 registerView.setVisible(true);
+                */
+                LoginController.handleRegButtonClick();
 
             }
         });
-        
-
+    
         //revalidate();
         //repaint();
         setSize(400, 700);
@@ -89,10 +88,6 @@ public class LoginView extends JFrame {
     public char[] getUserPassword() 
     {
         return password.getPassword();
-    }
-
-    public void updateView(String newData) {
-        userEmail.setText(newData);
     }
 
     public void addLoginButtonListener(ActionListener listener) 

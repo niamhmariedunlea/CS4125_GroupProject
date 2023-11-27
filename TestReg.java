@@ -1,10 +1,10 @@
 import Controller.RegisterController;
-import Model.Register;
+import Model.Account;
 import View.RegisterView;
 
 public class TestReg {
      public static void main(String[] args) {
-        Register model = new Register();
+        Account model = new Account();
         RegisterView view = new RegisterView();
         RegisterController controller = new RegisterController(model, view);
         view.setController(controller);
