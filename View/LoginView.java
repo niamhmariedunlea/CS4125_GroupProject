@@ -65,7 +65,7 @@ public class LoginView extends JFrame {
                 registerView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 registerView.setVisible(true);
                 */
-                LoginController.handleRegButtonClick();
+                controller.handleRegButtonClick(); // Use the controller method
 
             }
         });
@@ -93,6 +93,10 @@ public class LoginView extends JFrame {
     public void addLoginButtonListener(ActionListener listener) 
     {
         loginbtn.addActionListener(listener);
+    }
+
+    public void addRegisterButtonListener(ActionListener listener) {
+        registerbtn.addActionListener(listener);
     }
 
     public void setController(LoginController controller) {

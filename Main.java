@@ -26,6 +26,9 @@ public class Main {
         loginController.setLoginView(loginView);
         registerController.setRegisterView(registerView);
 
+        loginView.setVisible(true);
+        loginView.addRegisterButtonListener(e -> loginController.handleRegButtonClick());
+
     }
     
 }
