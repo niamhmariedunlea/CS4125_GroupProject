@@ -1,7 +1,10 @@
 package Controller;
 
+import java.io.IOException;
+
 import Services.LoginService;
 import Services.RegisterService;
+import View.AdminView;
 import View.LoginView;
 import View.RegisterView;
 
@@ -15,18 +18,43 @@ public class LoginController {
         this.service = service;
         this.view = view;
         this.view.setController(this); // Set the controller in the view
-        this.view.addLoginButtonListener(e -> authenticate()); // Add listener for the login button
+        this.view.addLoginButtonListener(e -> {
+            try {
+                authenticate();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }); // Add listener for the login button
         this.view.addRegisterButtonListener(e -> handleRegButtonClick()); // Add listener for the register button
 
     }
 
-    public void authenticate() {
+    public void authenticate() throws IOException {
         // Delegate authentication to the LoginService
         String email = view.getUserEmail();
         String password = new String(view.getUserPassword());
         boolean loginResult = service.authenticate(email, password);
-        view.showLoginResult(loginResult);
-    }
+
+        // check if admin is logging in 
+        if(loginResult){
+            boolean isAdminAccount = service.isAdminAccount(email);
+            // if the email is of the admin user then create the view to be displayed for the admin
+            if (isAdminAccount){
+                AdminView adminView = new AdminView();
+                AdminController adminController = new AdminController(adminView);
+                adminView.setController(adminController);
+                adminController.initializeData("scooters.csv"); // file to populate the data 
+                adminView.setVisible(true);
+            } else {
+                view.showLoginResult(true);
+            } 
+        }
+            else {
+                view.showLoginResult(false);
+            }
+        }
+    
 
     public void setLoginView(LoginView loginView) {
         this.view = loginView;
@@ -46,3 +74,4 @@ public class LoginController {
     }
     
 }
+

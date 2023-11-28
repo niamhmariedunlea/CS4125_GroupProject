@@ -27,6 +27,10 @@ public class LoginService {
         return false;
     }
 
+    public boolean isAdminAccount(String email){
+        return email.equals("admin@gmail.com"); // check if the account is admin 
+    }
+
 
     /* 
 
