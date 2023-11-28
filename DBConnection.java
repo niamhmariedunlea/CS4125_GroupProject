@@ -1,7 +1,7 @@
-public class DBConnection {
-
 import java.sql.Connection;
 import java.sql.DriverManager;
+
+public class DBConnection {
 
  public static Connection createConnection(){
 
@@ -28,5 +28,4 @@ import java.sql.DriverManager;
      }
      return connection;
  }
-
 }
