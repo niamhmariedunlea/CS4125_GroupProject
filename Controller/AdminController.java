@@ -78,5 +78,51 @@ public class AdminController {
             e.printStackTrace();
         }
     }
+
+    public void handleDeleteScooter(String scooterIDToDelete) {
+        // Remove the scooter from the CSV file
+        removeFromCSV(scooterIDToDelete);
+    
+        // Remove the scooter from the JTable in the AdminView
+        view.removeRowFromTable(scooterIDToDelete);
+    }
+
+    private void removeFromCSV(String scooterIDToDelete) {
+        // Input file path
+        String filePath = "scooters.csv";
+
+        // Create a list to store the lines to keep
+        List<String> linesToKeep = new ArrayList<>();
+    
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+    
+            // Read each line from the CSV file
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Split the line into columns
+                String[] columns = line.split(",");
+    
+                // Check if the scooterID matches the one to be deleted
+                if (!columns[0].equals(scooterIDToDelete)) {
+                    // If not, add the line to the list
+                    linesToKeep.add(line);
+                }
+            }
+    
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+        // Write the lines back to the original file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (String line : linesToKeep) {
+                writer.write(line);
+                writer.newLine();
+            }
+    
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
 }
