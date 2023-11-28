@@ -106,6 +106,8 @@ public class LoginView extends JFrame {
     public void showLoginResult(boolean isAuthenticated) {
         if (isAuthenticated) {
             JOptionPane.showMessageDialog(this, "Login successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+
         } else {
             JOptionPane.showMessageDialog(this, "Login failed. Invalid email or password.", "Error", JOptionPane.ERROR_MESSAGE);
         }

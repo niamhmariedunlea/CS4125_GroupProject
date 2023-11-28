@@ -3,6 +3,7 @@ package Controller;
 import java.sql.Date;
 
 import Model.Rental;
+import View.RentalView;
 
 public class RentalController {
     private Rental model;
