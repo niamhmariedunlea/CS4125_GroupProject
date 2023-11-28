@@ -8,7 +8,9 @@ public class Node {
     private String position;
     private List<Scooter> availableScooters;
 
+public Node(){
 
+};
 
     public Node(int nodeID, String position, List<Scooter> availableScooters)
     {
@@ -42,28 +44,27 @@ public class Node {
         return availableScooters;
     }
 
-    public void setAvailableScooters(List<Scooter> availableScooters)
-    {
+    public void setAvailableScooters(List<Scooter> availableScooters){
         this.availableScooters = availableScooters;
     }
 
-    //Should these be in the controller?
+    // Should these be in the controller?
 
-    public Boolean rentScooter(int scooterID)
-    {
-        if () {
-            return true;
+    public boolean rentScooter(int scooterID){
+        for (Scooter scooter : availableScooters){
+            if(scooter.getScooterID() == scooterID && scooter.getStatus().equals("Available")){
+                scooter.setStatus("Rented");
+                return true;
         }
-        else 
-        {
-            return false;
-        }
+    } return false;
+} 
 
+    public boolean returnScooter(int scooterID){
+        for (Scooter scooter : availableScooters){
+            if(scooter.getScooterID() == scooterID && scooter.getStatus().equals("Repair")){
+                scooter.setStatus("Available");
+                return true;
+            }
+        } return false;        
     }
-
-    public void returnScooter(int scooterID)
-    {
-
-    }
-    
-}
+}  
