@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.RepairState;
 import Model.Scooter;
 import View.AdminView;
 
@@ -124,5 +125,53 @@ public class AdminController {
             e.printStackTrace();
         }
     }
+
+    public void handleSetToRepair(String scooterIDToRepair) throws IOException {
+        // Change the status of the scooter to "Repair"
+        setScooterToRepair(scooterIDToRepair);
+
+        // Update the table in the AdminView
+        view.updateTable(readCSV("scooters.csv"));
+
+    }
+
+    private void setScooterToRepair(String scooterIDToRepair) {
+        Scooter scooter = findScooterByID(Integer.parseInt(scooterIDToRepair));
+        if (scooter != null) {
+            scooter.requestStateChange(new RepairState());
+        }
+    }
+
+    private Scooter findScooterByID(int targetID) {
+        // Input file path
+        String filePath = "scooters.csv";
     
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+    
+            // Read each line from the CSV file
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Split the line into columns
+                String[] columns = line.split(",");
+    
+                // Parse the scooterID from the CSV
+                int scooterID = Integer.parseInt(columns[0]);
+    
+                // Check if the scooterID matches the targetID
+                if (scooterID == targetID) {
+                    // Create a new Scooter instance with the details from the CSV
+                    Long qrCode = Long.parseLong(columns[1]);
+                    String currentPosition = columns[2];
+                    String status = columns[3];
+    
+                    return new Scooter(scooterID, qrCode, currentPosition, status);
+                }
+            }
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
+    
+        // Return null if no matching scooter is found
+        return null;
+    }
 }

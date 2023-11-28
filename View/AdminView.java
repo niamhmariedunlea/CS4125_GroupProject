@@ -20,9 +20,17 @@ public class AdminView extends JFrame {
     private DefaultTableModel tableModel;
     private JButton addButton;
     private JButton deleteButton;
+    private JButton repairButton;
     private AdminController controller;
 
     public AdminView() throws IOException{
+
+
+        title = new JLabel("Admin Page");
+        //title.setBounds(90, 100, 300, 100);
+        title.setHorizontalAlignment(JLabel.CENTER);
+        title.setFont(new Font("Calibri", Font.BOLD, 50));
+        add(title);
 
         String[] columns = {"Scooter ID", "QR Code", "Current Position", "Status", "Battery"};
         //String [][] data = controller.readCSV("accounts.csv");
@@ -37,7 +45,7 @@ public class AdminView extends JFrame {
         addButton = new JButton("Add Scooter");
         // Add action listener for the "Add Scooter" button
         addButton.addActionListener(e -> {
-    // Example: Prompt the user for input (you can use a dialog or any other method)
+        // Example: Prompt the user for input (you can use a dialog or any other method)
             String scooterID = JOptionPane.showInputDialog("Enter Scooter ID:");
             String qrCode = JOptionPane.showInputDialog("Enter QR Code:");
             String currentPosition = JOptionPane.showInputDialog("Enter Current Position:");
@@ -68,25 +76,39 @@ public class AdminView extends JFrame {
         deleteButton.setBounds(0, 550, 400, 50);
         add(deleteButton);
 
-        // Add the delete button to the view
-        //add(deleteButton, BorderLayout.SOUTH);
+        repairButton = new JButton("Repair Selected Scooter");
+        repairButton.addActionListener(e -> {
 
-        title = new JLabel("Admin Page");
-        //title.setBounds(90, 100, 300, 100);
-        title.setHorizontalAlignment(JLabel.CENTER);
-        title.setFont(new Font("Calibri", Font.BOLD, 50));
-        add(title);
+            int selectedRow = scooterTable.getSelectedRow();
+
+            if (selectedRow >= 0) {
+                // Get the scooter ID from the selected row
+                String scooterIDToRepair = (String) tableModel.getValueAt(selectedRow, 0);
+        
+                // Handle setting the scooter to repair
+                try {
+                    controller.handleSetToRepair(scooterIDToRepair);
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select a scooter to set to repair.", "No Scooter Selected", JOptionPane.WARNING_MESSAGE);
+            }
+        });
+
+        repairButton.setBounds(0, 600, 400, 50);
+        add(repairButton);
+
+
+
 
         setLayout(new BorderLayout());
         add(scrollPane, BorderLayout.CENTER);
         add(title, BorderLayout.NORTH);
-        //add(addButton, BorderLayout.SOUTH);
-
 
         setSize(400, 700);
-        //setLayout(null);
         setResizable(false);
-        //setLocation(100, 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
