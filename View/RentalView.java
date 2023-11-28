@@ -8,7 +8,6 @@ package View;
 import java.sql.Date;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 
 public class RentalView extends JFrame {
