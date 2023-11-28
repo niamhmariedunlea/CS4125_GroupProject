@@ -83,4 +83,11 @@ public class Account {
         account.setLastName(fields[3]);
         return account;
     }
+
+    public int getUserID() {
+        return 0;
+    }
+
+    public void setUserID(int userID) {
+    }
 }

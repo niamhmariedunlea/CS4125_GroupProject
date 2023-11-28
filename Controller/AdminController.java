@@ -24,6 +24,7 @@ public class AdminController {
     }
 
     public AdminController(AdminView adminView) {
+        this.view = adminView;
     }
 
     public String[][] readCSV(String filePath) throws IOException {
