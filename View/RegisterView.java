@@ -1,25 +1,24 @@
-
-/*
- * Author: Niamh Dunlea 
- * Date: October/November 2023
- */
 package View;
 
 import javax.swing.*;
+
+import Controller.RegisterController;
+
 import java.awt.*;
 import java.awt.event.*;
 
 
- public class AccountView extends JFrame {
+ public class RegisterView extends JFrame {
 
     JLabel title, label1, label2, label3, label4;
     JTextField user, fname, lname;
     JPasswordField password;
-    JButton logoutbtn;
+    JButton registerbtn;
+    RegisterController controller;
 
-    public AccountView(){
+    public RegisterView(){
 
-        title = new JLabel("Account");
+        title = new JLabel("Register");
         title.setBounds(90, 100, 300, 100);
         title.setFont(new Font("Calibri", Font.BOLD, 50));
         add(title);
@@ -46,33 +45,37 @@ import java.awt.event.*;
 
 
         user = new JTextField();
-        user.setEditable(false);
         user.setBounds(160, 200, 200, 45);
         add(user);
 
         password = new JPasswordField();
-        password.setEditable(true);
         password.setBounds(160, 300, 200, 45);
         add(password);
 
         
         fname = new JTextField();
-        fname.setEditable(false);
         fname.setBounds(160, 400, 200, 45);
         add(fname);
 
         lname = new JTextField();
-        lname.setEditable(false);
         lname.setBounds(160, 500, 200, 45);
         add(lname);
 
-        logoutbtn = new JButton("Logout");
-        logoutbtn.setBounds(50, 600, 240, 50);
-        add(logoutbtn);
-        logoutbtn.addActionListener(new ActionListener() {
+        registerbtn = new JButton("Register");
+        registerbtn.setBounds(50, 600, 240, 50);
+        add(registerbtn);
+        registerbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                /* 
+                String email = user.getText();
+                String newpassword = new String(password.getPassword());
+                String firstname = fname.getText();
+                String lastname = lname.getText();
+                // Pass the file path to the controller when calling authenticateUser
+                controller.registerUser("account_data.csv", email, newpassword, firstname, lastname);
+                */
+                controller.handleButtonClick();
             }
         });
 
@@ -107,6 +110,23 @@ import java.awt.event.*;
 
     public void updateView(String newData) {
         user.setText(newData);
+    }
+        
+    public void setController(RegisterController controller) {
+        this.controller = controller;
+    }
+    
+
+    public void addRegisterButtonListener(ActionListener listener) {
+        registerbtn.addActionListener(listener);
+    }
+
+    public void showRegisterResult(boolean isRegistered) {
+        if (isRegistered) {
+            JOptionPane.showMessageDialog(this, "Registration successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Registration failed. Try Again!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
 

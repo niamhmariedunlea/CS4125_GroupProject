@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Account;
+import View.*;
 
 public class AccountController {
     private Account model;

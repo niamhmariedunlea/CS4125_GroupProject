@@ -3,13 +3,19 @@
  * Date: October/November 2023
  */
 
+package View;
+
+import java.util.ArrayList;
+
+import Model.Scooter;
+
 public class ScooterView {
    
-    public List<Scooter> displayScooters;
+    public ArrayList <Scooter> displayScooters;
     public String displayScooterDetails;
-    public enum updateScooter;
-    public displayRentalInformation;
-    public displayReturn;
+    public Status status;  
+    public String displayRentalInformation;
+    public String displayReturn;
 
 
     public void displayScooterInformation(int scooterID, int nodeID, String position){
@@ -17,6 +23,7 @@ public class ScooterView {
             System.out.println("Scooter ID: " + scooterID);
             System.out.println("Node ID: " + nodeID);
             System.out.println("Location: " + position);
+            System.out.println("Status: " + status);
         }
 }
 

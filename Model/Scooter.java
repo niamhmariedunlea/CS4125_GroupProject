@@ -3,22 +3,27 @@ public class Scooter {
     private int scooterID;
     public Long qrCode;
     private String currentPosition;
+    private ScooterState state;
+  
+    boolean startRental;
+    boolean endRental;
 
-    private enum Status 
-    {
-        AVAILABLE, 
-        UNAVAILABLE,
-        BROKEN
-    }  
+    // used for the battery level 
+    private static float fullBatteryLevel = 100.0f;
+    public double batteryLevel;
     
-    private Status status;
+    private String status;
 
-    public Scooter(int scooterID, Long qrCode, String currentPosition, Status status)
+    public Scooter(){};
+
+    public Scooter(int scooterID, Long qrCode, String currentPosition, String status)
     {
         this.scooterID = scooterID;
         this.qrCode = qrCode;
         this.currentPosition = currentPosition;
+        this.state = new AvailableState();
         this.status = status;
+        this.batteryLevel = fullBatteryLevel;
     }
 
     public int getScooterID()
@@ -51,23 +56,48 @@ public class Scooter {
         this.currentPosition = currentPosition;
     }
 
-    public Status getStatus()
+    public void setState(ScooterState state) {
+        this.state = state;
+    }
+
+    public String getStatus()
     {
         return status;
     }
 
-    public void setStatus(Status status)
+    public void setStatus(String status)
     {
         this.status = status;
     }
 
-    public int amountOfScooters()
+    public void requestStateChange(ScooterState newState) 
     {
-
+        setState(newState);
+        state.handleState(this);
     }
 
     public void addScooter()
     {
 
     }
+
+    public double getBatteryLevel(){
+        return batteryLevel;
+    }
+
+    public void startRental(){
+        // when a rental is started it should display the battery level and let the user know how long approx they have
+        System.out.println("Your rental has started at INSERT DATE TIME HERE ");
+
+    }
+
+    public void endRental(){
+        // ending a rental will calculate the usage and determine if the sscooter should be allowed available or needs to be charged 
+        // needs to call decorator? 
+
+        System.out.println("Your rental has ended at INSERT DATE TIME HERE ");
+
+    
+    }
+
 }
