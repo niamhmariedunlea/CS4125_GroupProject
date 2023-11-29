@@ -46,7 +46,7 @@ public class AdminController {
                 dataArray = allData.toArray(dataArray);
         
                 return dataArray;
-            }
+    }
 
     public void initializeData(String filePath) throws IOException {
         String[][] data = readCSV(filePath);
@@ -130,13 +130,54 @@ public class AdminController {
         }
     }
 
-    public void handleSetToRepair(String scooterIDToRepair) throws IOException {
-        // Change the status of the scooter to "Repair"
-        setScooterToRepair(scooterIDToRepair);
+    private ArrayList<Scooter> readScootersFromCSV() {
+        String filePath = "scooters.csv";
+        ArrayList<Scooter> scooters = new ArrayList<>();
 
-        // Update the table in the AdminView
-        view.updateTable(readCSV("scooters.csv"));
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] columns = line.split(",");
+                int scooterID = Integer.parseInt(columns[0]);
+                Long qrCode = Long.parseLong(columns[1]);
+                String currentPosition = columns[2];
+                String status = columns[3];
 
+                // Create a Scooter instance and add it to the ArrayList
+                Scooter scooter = new Scooter(scooterID, qrCode, currentPosition, status);
+                scooters.add(scooter);
+            }
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+        return scooters;
+    }
+
+    private void writeScootersToCSV(ArrayList<Scooter> scooters) {
+        String filePath = "scooters.csv";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (Scooter scooter : scooters) {
+                String line = scooter.getScooterID() + "," + scooter.getQrCode() + ","
+                        + scooter.getCurrentPosition() + "," + scooter.getStatus()
+                        + "," + scooter.getBatteryLevel();
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Scooter findScooterByID(int targetID) {
+        ArrayList<Scooter> scooters = readScootersFromCSV();
+        for (Scooter scooter : scooters) {
+            if (scooter.getScooterID() == targetID) {
+                return scooter;
+            }
+        }
+        // If no scooter with the matching ID is found, return null
+        return null;
     }
 
     private void setScooterToRepair(String scooterIDToRepair) {
@@ -146,36 +187,36 @@ public class AdminController {
         }
     }
 
-    private Scooter findScooterByID(int targetID) {
-        // Input file path
-        String filePath = "scooters.csv";
-    
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-    
-            // Read each line from the CSV file
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Split the line into columns
-                String[] columns = line.split(",");
-    
-                // Parse the scooterID from the CSV
-                int scooterID = Integer.parseInt(columns[0]);
-    
-                // Check if the scooterID matches the targetID
-                if (scooterID == targetID) {
-                    // Create a new Scooter instance with the details from the CSV
-                    Long qrCode = Long.parseLong(columns[1]);
-                    String currentPosition = columns[2];
-                    String status = columns[3];
-    
-                    return new Scooter(scooterID, qrCode, currentPosition, status);
-                }
+    public void handleSetToRepair(String scooterIDToRepair) throws IOException {
+        // Change the status of the scooter to "Repair"
+       // setScooterToRepair(scooterIDToRepair);
+       findScooterByIDAndUpdateStatus(Integer.parseInt(scooterIDToRepair));
+
+        // Update the table in the AdminView
+        view.updateTable(readCSV("scooters.csv"));
+
+    }
+
+    private Scooter findScooterByIDAndUpdateStatus(int targetID) {
+        // Read all scooters from the CSV
+        ArrayList<Scooter> scooters = readScootersFromCSV();
+
+        // Find the scooter with the matching ID and update its status
+        for (Scooter scooter : scooters) {
+            if (scooter.getScooterID() == targetID) {
+                scooter.requestStateChange(new RepairState());
+                break; // No need to continue iterating
             }
-        } catch (IOException | NumberFormatException e) {
-            e.printStackTrace();
         }
-    
-        // Return null if no matching scooter is found
-        return null;
+
+        // Write the modified scooters back to the CSV
+        writeScootersToCSV(scooters);
+
+        // Return the updated scooter or null if not found
+        return scooters.stream()
+                .filter(s -> s.getScooterID() == targetID)
+                .findFirst()
+                .orElse(null);
     }
 }
+
