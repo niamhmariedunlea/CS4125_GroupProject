@@ -1,4 +1,8 @@
 package Model;
+
+import java.time.LocalDateTime;
+import java.sql.Date;
+
 public class Scooter {
     private int scooterID;
     public Long qrCode;
@@ -87,8 +91,9 @@ public class Scooter {
 
     public void startRental(){
         // when a rental is started it should display the battery level and let the user know how long approx they have
-        System.out.println("Your rental has started at " + new Date());
-        System.out.println("Battery level is now: " + batteryLevel;
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        System.out.println("Your rental has started at " + currentDateTime);
+        System.out.println("Battery level is now: " + batteryLevel);
     }
 
     public void endRental(){

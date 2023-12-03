@@ -1,5 +1,6 @@
 package Model;
 
+import java.time.LocalDateTime;
 import java.sql.Date;
 
 public abstract class ScooterDecorator extends Scooter {
@@ -29,12 +30,14 @@ if(updateBatteryLevel < 20){
 } else {
     setStatus("Available");
 }
-System.out.println("Your rental has ended at " + new Date());
+LocalDateTime currentDateTime = LocalDateTime.now();
+System.out.println("Your rental has ended at " + currentDateTime);
 }
 
 private int calculateMinutes(){
 // calculate duration of rental
-Date endTime = new Date();
+LocalDateTime currentDateTime = LocalDateTime.now();
+Date endTime = currentDateTime;
 long timeDiffMill = endTime.getTime() - startTime.getTime(); // time in milliseconds 
 long timeDiffMins = timeDiffMill / (60 * 1000); // milliseconds to minutes
 return (int) timeDiffMins;
