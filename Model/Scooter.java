@@ -87,17 +87,14 @@ public class Scooter {
 
     public void startRental(){
         // when a rental is started it should display the battery level and let the user know how long approx they have
-        System.out.println("Your rental has started at INSERT DATE TIME HERE ");
-
+        System.out.println("Your rental has started at " + new Date());
+        System.out.println("Battery level is now: " + batteryLevel;
     }
 
     public void endRental(){
-        // ending a rental will calculate the usage and determine if the sscooter should be allowed available or needs to be charged 
-        // needs to call decorator? 
-
-        System.out.println("Your rental has ended at INSERT DATE TIME HERE ");
-
-    
+        // ending a rental will calculate the usage and determine if the sscooter should be allowed available or needs to be charged less that 20% 
+        ScooterDecorator decorator = new BatteryWarningDecorator(this, 20);
+        decorator.endRide(); // calling the decorator pattern 
     }
 
 }
