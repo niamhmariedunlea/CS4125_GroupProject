@@ -6,6 +6,7 @@ import Controller.LoginController;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 
 public class LoginView extends JFrame {
@@ -48,7 +49,12 @@ public class LoginView extends JFrame {
         loginbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.authenticate();
+                try {
+                    controller.authenticate();
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
             }
         });
  

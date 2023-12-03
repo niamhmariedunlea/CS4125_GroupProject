@@ -21,6 +21,7 @@ public class Scooter {
         this.scooterID = scooterID;
         this.qrCode = qrCode;
         this.currentPosition = currentPosition;
+        // Any scooter automatically gets created with the automatic status
         this.state = new AvailableState();
         this.status = status;
         this.batteryLevel = fullBatteryLevel;
@@ -70,6 +71,7 @@ public class Scooter {
         this.status = status;
     }
 
+    // Use this function to set the status of the scooter
     public void requestStateChange(ScooterState newState) 
     {
         setState(newState);
