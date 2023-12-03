@@ -11,6 +11,11 @@ public class RegisterService {
     private static final String CSV_FILE_PATH = "accounts.csv";
 
         public Account register(String email, String password, String firstname, String lastname) {
+
+        if (!email.endsWith("ul.ie")) {
+                // Email doesn't end with "ul.ie", handle this case (throw an exception, return an error response, etc.)
+                throw new IllegalArgumentException("You must be a current UL staff member or student!");
+        }
         // Logic to create a new account
         Account newAccount = new Account();
         newAccount.setUlEmail(email);
@@ -28,23 +33,5 @@ public class RegisterService {
 
         return newAccount;
     }
-
-
-/*
-    public boolean registerUser(String filePath, String email, String newpassword, String firstname, String lastname) {
-    try (PrintWriter writer = new PrintWriter(new FileWriter(filePath, true))) {
-            // Append user data to the CSV file
-            writer.println(String.format("%s,%s,%s,%s",
-                    email,
-                    newpassword,
-                    firstname,
-                    lastname));
-                    return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-    */
     
 }
