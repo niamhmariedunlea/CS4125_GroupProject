@@ -4,8 +4,8 @@ package Controller;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import Model.Homepage;
 import Model.Scooter;
-import Model.ScooterModel;
 
 import View.*;
 
@@ -14,9 +14,9 @@ import java.awt.event.ActionListener;
 
 public class HomepageController {
     private HomepageView view;
-    private ScooterModel model;
+    private Homepage model;
 
-    public HomepageController(HomepageView view, ScooterModel model) {
+    public HomepageController(HomepageView view, Homepage model) {
         this.view = view;
         this.model = model;
         initController();

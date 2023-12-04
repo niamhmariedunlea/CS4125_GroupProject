@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 
+import Model.Homepage;
 import Services.LoginService;
 import Services.RegisterService;
 import View.AdminView;
@@ -49,8 +50,9 @@ public class LoginController {
                 adminView.setVisible(true);
             } else {
                 view.showLoginResult(true);
+                view.setVisible(false);
                 HomepageView homepageView = new HomepageView();
-                HomepageController homepageController = new HomepageController(homepageView);
+                HomepageController homepageController = new HomepageController(homepageView, null);
                 homepageView.setController(homepageController);
                 homepageView.setVisible(true);
             } 

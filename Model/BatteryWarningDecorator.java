@@ -16,6 +16,11 @@ public class BatteryWarningDecorator extends ScooterDecorator{
     public void endRide(){
         super.endRide(); // call method in ScooterDecorator 
     }
+
+    //Factory save
+    public void setType(){
+
+    }
 }
 
 

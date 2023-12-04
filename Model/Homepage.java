@@ -1,37 +1,55 @@
-// package Model;
+package Model;
 
-// import java.io.BufferedReader;
-// import java.io.FileReader;
-// import java.io.IOException;
-// import java.util.List;
+import java.util.List;
+import java.util.ArrayList;
 
-// public class Homepage {
 
-//     private String email;
-//     private String password;
-//     private ScooterFactory scooterFactory;
- 
-//     public Homepage(){
-//         this.scooterFactory = new ScooterFactory();
-//     }
+public class Homepage {
+    private List<Scooter> scooters;
 
-//     public List<Scooter> createScooterList() {
-//         return scooterFactory.createScooterListf(5);
-//     }
+    public Homepage(List<Scooter> initialScooters) {
+        this.scooters = new ArrayList<>(initialScooters);
+    }
 
-//     public boolean authenticateUser(String filePath, String email, String password) {
-//         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-//             String line;
-//             while ((line = reader.readLine()) != null) {
-//                 String[] userData = line.split(",");
-//                 if (userData.length == 2 && userData[0].equals(email) && userData[1].equals(password)) {
-//                     return true; // Authentication successful
-//                 }
-//             }
-//         } catch (IOException e) {
-//             e.printStackTrace();
-//         }
-//         return false; // Authentication failed
-//     }
-    
-// }
+    public Homepage() {
+        this.scooters = new ArrayList<>();
+    }
+
+    public void loadScootersFromCSV(String filePath) {
+        scooters = ScooterFactory.createScootersFromCSV(filePath);
+    }
+
+    public List<Scooter> getScooters() {
+        return scooters;
+    }
+
+    public Scooter getScooterAt(int index) {
+        return scooters.get(index);
+    }
+
+    public void rentScooter(Scooter scooter) {
+        // Implement logic to update scooter status for renting
+        // ...
+        if(scooter.getStatus()=="In-Repair"||scooter.getStatus()=="Unavailable")
+        {
+            System.out.println("Scooter cannot be rented");
+        }
+        else
+        {
+            //scooter.requestStateChange(new UnavailableState());
+        }
+    }
+
+    public void returnScooter(Scooter scooter) {
+        // Implement logic to update scooter status for returning
+        // ...
+        if(scooter.getStatus()=="Unavailable")
+        {
+            //scooter.requestStateChange(new AvailableState());
+        }
+        else
+        {
+            System.out.println("Scooter cannot be returned!");
+        }
+    }
+}

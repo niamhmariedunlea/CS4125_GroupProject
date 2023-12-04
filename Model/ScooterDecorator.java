@@ -27,6 +27,15 @@ this.batteryLevel = newBatteryLevel;
 System.out.println("Battery level is now: " + newBatteryLevel);
 }
 
+//For Factory
+public void getSpeed(){
+
+}
+
+public String getPrice() {
+    return "null";
+}
+
 public void endRide(){
 // calculate the battery level based on the duration
 
@@ -45,16 +54,16 @@ LocalDateTime currentDateTime = LocalDateTime.now();
 System.out.println("Your rental has ended at " + currentDateTime);
 }
 
-private int calculateMinutes(){
-// calculate duration of rental
-LocalDateTime currentDateTime = LocalDateTime.now();
-Date endTime = currentDateTime;
-long timeDiffMill = endTime.getTime() - startTime.getTime(); // time in milliseconds 
-long timeDiffMins = timeDiffMill / (60 * 1000); // milliseconds to minutes
-return (int) timeDiffMins;
-    }
+// private int calculateMinutes(){
+// // calculate duration of rental
+// LocalDateTime currentDateTime = LocalDateTime.now();
+// Date endTime = currentDateTime;
+// long timeDiffMill = endTime.getTime() - startTime.getTime(); // time in milliseconds 
+// long timeDiffMins = timeDiffMill / (60 * 1000); // milliseconds to minutes
+// return (int) timeDiffMins;
+//     }
 
-}
+// }
 
 
 

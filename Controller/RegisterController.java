@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Account;
+import Model.Homepage;
 import Services.RegisterService;
 import View.*;
 
@@ -26,10 +27,13 @@ public class RegisterController {
 
         // You can update the view or handle the result as needed
         view.showRegisterResult(newAccount != null);
+        Homepage model = new Homepage();
         HomepageView homepageView = new HomepageView();
-        HomepageController homepageController = new HomepageController(homepageView);
-        homepageView.setController(homepageController);
+        HomepageController controller = new HomepageController(homepageView, model);
+        homepageView.setController(controller);
         homepageView.setVisible(true);
+
+
     }
 
     public void setRegisterView(RegisterView view) {

@@ -6,15 +6,21 @@
 package View;
 
 import java.sql.Date;
+import javax.swing.*;
+import java.awt.*;
+
+public class RentalView extends JFrame {
 
 public boolean queryRental;
 public boolean updateRental;
+private JLabel title;
+
 
 public RentalView(){
-
+    
     title = new JLabel("Rentals");
     title.setBounds(90, 150, 300, 100);
-    title.setFont(new Font("Calibri", Font.BOLD, 50));
+    title.setFont(new Font("Calibri", Font.BOLD, 30));
     add(title);
 }
 

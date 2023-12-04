@@ -1,20 +1,20 @@
-package Controller;
+// package Controller;
 
-import Model.Payment;
+// import Model.Payment;
 
-public class PaymentController {
-    private Payment model;
+// public class PaymentController {
+//     private Payment model;
 
-    private boolean paymentComplete;
+//     private boolean paymentComplete;
 
-    public void makePayment() {
-        //api api api
-        //if(payment is valid) {
-            this.paymentComplete = true;
-        ///
-    }
+//     public void makePayment() {
+//         //api api api
+//         //if(payment is valid) {
+//             this.paymentComplete = true;
+//         ///
+//     }
 
-    public boolean isPaymentComplete() {
-        return this.paymentComplete;
-    }
-}
+//     public boolean isPaymentComplete() {
+//         return this.paymentComplete;
+//     }
+// }

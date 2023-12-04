@@ -10,6 +10,7 @@ import java.util.List;
 
 import Model.RepairState;
 import Model.Scooter;
+
 import View.AdminView;
 
 public class AdminController {
@@ -55,18 +56,18 @@ public class AdminController {
             
 
     public void handleAddScooter(String scooterID, String qrCode, String currentPosition, String status) {
-        Scooter newScooter = new Scooter(
-            Integer.parseInt(scooterID),
-            Long.parseLong(qrCode),
-            currentPosition,
-            status
-    );
+        // Scooter newScooter = new Scooter(
+        //     Integer.parseInt(scooterID),
+        //     Long.parseLong(qrCode),
+        //     currentPosition,
+        //     status
+    //);
 
     // Add the new scooter to the CSV file
-    addToCSV(newScooter);
+    //addToCSV(newScooter);
 
     // Add the new scooter to the JTable in the AdminView
-    view.addRowToTable(newScooter);
+    //view.addRowToTable(newScooter);
     }
 
 
@@ -144,8 +145,8 @@ public class AdminController {
                 String status = columns[3];
 
                 // Create a Scooter instance and add it to the ArrayList
-                Scooter scooter = new Scooter(scooterID, qrCode, currentPosition, status);
-                scooters.add(scooter);
+                //Scooter scooter = new Scooter(scooterID, qrCode, currentPosition, status);
+                //scooters.add(scooter);
             }
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
