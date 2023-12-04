@@ -1,5 +1,13 @@
+<<<<<<< HEAD
+1234,1234,Kemmy Business School,Available,Battery level is high.,Fast
+1236,1236,UL Library,Available,Battery level is high.,Medium
+1237,1237,CSIS,Repair,Battery level is high.,Slow
+1238,1238,Kemmy Business School,Available,Battery level is high.,Fast
+1239,1239,CSIS,Available,Battery level is high.,Medium
+=======
 1234,1234,Kemmy Business School,Available,100.0
 1236,1236,UL Library,Available,100.0
 1237,1237,CSIS,In-Repair,100.0
 1238,1238,Kemmy Business School,In-Repair,100.0
 1239,1239,CSIS,Available,100.0
+>>>>>>> origin/week8

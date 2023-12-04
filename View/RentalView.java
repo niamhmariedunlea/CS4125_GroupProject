@@ -6,6 +6,8 @@
 package View;
 
 import java.sql.Date;
+<<<<<<< HEAD
+=======
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,6 +15,7 @@ import java.awt.*;
 public class RentalView extends JFrame {
 
     private JLabel title;
+>>>>>>> origin/week8
 
 public boolean queryRental;
 public boolean updateRental;

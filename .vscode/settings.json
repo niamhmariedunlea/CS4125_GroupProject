@@ -1,4 +1,7 @@
 {
+<<<<<<< HEAD
+    "java.configuration.runtimes": []
+=======
     "java.completion.favoriteStaticMembers": [
         "org.junit.Assert.*",
         "org.junit.Assume.*",
@@ -10,4 +13,5 @@
         "org.mockito.ArgumentMatchers.*",
         "org.mockito.Answers.*"
     ]
+>>>>>>> origin/week8
 }

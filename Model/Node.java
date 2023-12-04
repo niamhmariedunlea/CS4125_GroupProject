@@ -50,6 +50,26 @@ public Node(){
 
     // Should these be in the controller?
 
+<<<<<<< HEAD
+    // public Boolean rentScooter(int scooterID)
+    // {
+    //     // if () {
+    //     //     return true;
+    //     // }
+    //     // else 
+    //     // {
+    //     //     return false;
+    //     // }
+
+    // }
+
+    public void returnScooter(int scooterID)
+    {
+
+    }
+    
+}
+=======
     public boolean rentScooter(int scooterID){
         for (Scooter scooter : availableScooters){
             if(scooter.getScooterID() == scooterID && scooter.getStatus().equals("Available")){
@@ -68,3 +88,4 @@ public Node(){
         } return false;        
     }
 }  
+>>>>>>> origin/week8
