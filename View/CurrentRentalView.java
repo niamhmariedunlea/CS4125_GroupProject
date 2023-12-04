@@ -2,10 +2,7 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-<<<<<<< HEAD
 import java.awt.event.*;
-=======
->>>>>>> origin/week8
 
 public class CurrentRentalView extends JFrame {
 

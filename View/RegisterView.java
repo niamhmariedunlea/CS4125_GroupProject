@@ -67,21 +67,12 @@ import java.awt.event.*;
         registerbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-=======
-                /* 
->>>>>>> origin/week8
                 String email = user.getText();
                 String newpassword = new String(password.getPassword());
                 String firstname = fname.getText();
                 String lastname = lname.getText();
                 // Pass the file path to the controller when calling authenticateUser
                 controller.registerUser("account_data.csv", email, newpassword, firstname, lastname);
-<<<<<<< HEAD
-=======
-                */
-                controller.handleButtonClick();
->>>>>>> origin/week8
             }
         });
 
@@ -123,12 +114,8 @@ import java.awt.event.*;
     }
     
 
-<<<<<<< HEAD
     public void addRegisterButtonListener(ActionListener listener) 
     {
-=======
-    public void addRegisterButtonListener(ActionListener listener) {
->>>>>>> origin/week8
         registerbtn.addActionListener(listener);
     }
 
@@ -136,11 +123,7 @@ import java.awt.event.*;
         if (isRegistered) {
             JOptionPane.showMessageDialog(this, "Registration successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
-<<<<<<< HEAD
             JOptionPane.showMessageDialog(this, "Registration failed. Try Again!.", "Error", JOptionPane.ERROR_MESSAGE);
-=======
-            JOptionPane.showMessageDialog(this, "Registration failed. Try Again!", "Error", JOptionPane.ERROR_MESSAGE);
->>>>>>> origin/week8
         }
     }
 }

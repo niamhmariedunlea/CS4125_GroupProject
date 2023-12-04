@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 package Model;
 
 import java.util.Arrays;
 import java.util.ArrayList;
 
-=======
-import java.util.Arrays;
-import java.util.ArrayList;
-
-import Scooter;
-
->>>>>>> origin/week8
 public class NodeService {
     
 
