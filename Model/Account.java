@@ -1,7 +1,8 @@
 package Model;
+
 public class Account {
 
-    private int userID;
+    //private int userID;
     private String ulEmail;
     private String password;
     private String firstName;
@@ -9,15 +10,19 @@ public class Account {
 
     public Account(){};
 
+<<<<<<< HEAD
     public Account(int userID, String ulEmail, String password, String firstName, String lastName)
+=======
+    public Account(String ulEmail, String password, String firstName, String lastName)
+>>>>>>> origin/week8
     {
-        this.userID = userID;
         this.ulEmail = ulEmail;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
+    /* 
     public int getUserID()
     {
         return userID;
@@ -27,6 +32,7 @@ public class Account {
     {
         this.userID = userID;
     }
+    */
 
     public String getUlEmail()
     {
@@ -68,5 +74,24 @@ public class Account {
         this.lastName = lastName;
     }
 
-    
+    public String toCsvString() {
+        return ulEmail + "," + password + "," + firstName + "," + lastName;
+    }
+
+    public static Account fromCsvString(String csvString) {
+        String[] fields = csvString.split(",");
+        Account account = new Account();
+        account.setUlEmail(fields[0]);
+        account.setPassword(fields[1]);
+        account.setFirstName(fields[2]);
+        account.setLastName(fields[3]);
+        return account;
+    }
+
+    public int getUserID() {
+        return 0;
+    }
+
+    public void setUserID(int userID) {
+    }
 }

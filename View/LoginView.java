@@ -6,6 +6,10 @@ import Controller.LoginController;
 
 import java.awt.*;
 import java.awt.event.*;
+<<<<<<< HEAD
+=======
+import java.io.IOException;
+>>>>>>> origin/week8
 
 
 public class LoginView extends JFrame {
@@ -15,7 +19,11 @@ public class LoginView extends JFrame {
     private JPasswordField password;
     private JButton loginbtn, registerbtn;
     private LoginController controller;
+<<<<<<< HEAD
     private RegisterView registerView;
+=======
+
+>>>>>>> origin/week8
 
     public LoginView(){
 
@@ -48,10 +56,19 @@ public class LoginView extends JFrame {
         loginbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
                 String email = user.getText();
                 String newpassword = new String(password.getPassword());
                 // Pass the file path to the controller when calling authenticateUser
                 controller.authenticateUser("user_data.csv", email, newpassword);
+=======
+                try {
+                    controller.authenticate();
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+>>>>>>> origin/week8
             }
         });
  
@@ -62,15 +79,28 @@ public class LoginView extends JFrame {
         registerbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
+=======
+                /* 
+>>>>>>> origin/week8
                 dispose();
                 registerView = new RegisterView();
                 registerView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 registerView.setVisible(true);
+<<<<<<< HEAD
 
             }
         });
         
 
+=======
+                */
+                controller.handleRegButtonClick(); // Use the controller method
+
+            }
+        });
+    
+>>>>>>> origin/week8
         //revalidate();
         //repaint();
         setSize(400, 700);
@@ -91,15 +121,25 @@ public class LoginView extends JFrame {
         return password.getPassword();
     }
 
+<<<<<<< HEAD
     public void updateView(String newData) {
         userEmail.setText(newData);
     }
 
+=======
+>>>>>>> origin/week8
     public void addLoginButtonListener(ActionListener listener) 
     {
         loginbtn.addActionListener(listener);
     }
 
+<<<<<<< HEAD
+=======
+    public void addRegisterButtonListener(ActionListener listener) {
+        registerbtn.addActionListener(listener);
+    }
+
+>>>>>>> origin/week8
     public void setController(LoginController controller) {
         this.controller = controller;
     }
@@ -107,6 +147,11 @@ public class LoginView extends JFrame {
     public void showLoginResult(boolean isAuthenticated) {
         if (isAuthenticated) {
             JOptionPane.showMessageDialog(this, "Login successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/week8
         } else {
             JOptionPane.showMessageDialog(this, "Login failed. Invalid email or password.", "Error", JOptionPane.ERROR_MESSAGE);
         }

@@ -8,6 +8,10 @@ package View;
 
 import java.util.List;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/week8
 
 
 // public class NodeView {
@@ -26,14 +30,17 @@ import java.util.List;
 
 
 
+<<<<<<< HEAD
 //         // number of scooters in one node 
 //         public void scootersAtLocation(int scooterID, int nodeID, String position, List <Scooter>){
 //             System.out.println("Location information: ");
+=======
+        // number of scooters in one node 
+        public void scootersAtLocation(int scooterID, int nodeID, String position, List <Scooter>){
+            System.out.println("Location information: ");
+>>>>>>> origin/week8
                 
 //             }
-
-    
-
 
 
 

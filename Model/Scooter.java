@@ -1,12 +1,20 @@
 package Model;
 
+<<<<<<< HEAD
 import java.util.Random;
 
 public abstract class Scooter {
+=======
+import java.time.LocalDateTime;
+import java.sql.Date;
+
+public class Scooter {
+>>>>>>> origin/week8
     private int scooterID;
     public Long qrCode;
     private String currentPosition;
     private ScooterState state;
+<<<<<<< HEAD
     
     //Factory Method
     protected double speed;
@@ -24,6 +32,18 @@ public abstract class Scooter {
     
     private String status;
 
+=======
+  
+    boolean startRental;
+    boolean endRental;
+
+    // used for the battery level 
+    private static float fullBatteryLevel = 100.0f;
+    public double batteryLevel;
+    
+    private String status;
+
+>>>>>>> origin/week8
     public Scooter(){};
 
     public Scooter(int scooterID, Long qrCode, String currentPosition, String status)
@@ -31,6 +51,10 @@ public abstract class Scooter {
         this.scooterID = scooterID;
         this.qrCode = qrCode;
         this.currentPosition = currentPosition;
+<<<<<<< HEAD
+=======
+        // Any scooter automatically gets created with the automatic status
+>>>>>>> origin/week8
         this.state = new AvailableState();
         this.status = status;
         this.batteryLevel = fullBatteryLevel;
@@ -81,6 +105,10 @@ public abstract class Scooter {
         this.status = status;
     }
 
+<<<<<<< HEAD
+=======
+    // Use this function to set the status of the scooter
+>>>>>>> origin/week8
     public void requestStateChange(ScooterState newState) 
     {
         setState(newState);
@@ -98,6 +126,7 @@ public abstract class Scooter {
 
     public void startRental(){
         // when a rental is started it should display the battery level and let the user know how long approx they have
+<<<<<<< HEAD
         System.out.println("Your rental has started at INSERT DATE TIME HERE ");
 
     }
@@ -152,4 +181,17 @@ public abstract class Scooter {
     //    }  
     // }
 
+=======
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        System.out.println("Your rental has started at " + currentDateTime);
+        System.out.println("Battery level is now: " + batteryLevel);
+    }
+
+    public void endRental(){
+        // ending a rental will calculate the usage and determine if the sscooter should be allowed available or needs to be charged less that 20% 
+        ScooterDecorator decorator = new BatteryWarningDecorator(this, 20);
+        decorator.endRide(); // calling the decorator pattern 
+    }
+
+>>>>>>> origin/week8
 }

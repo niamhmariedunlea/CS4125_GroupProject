@@ -6,11 +6,27 @@
 package View;
 
 import java.sql.Date;
+<<<<<<< HEAD
+=======
+import javax.swing.*;
+import java.awt.*;
 
-public class RentalView {
+
+public class RentalView extends JFrame {
+
+    private JLabel title;
+>>>>>>> origin/week8
+
 public boolean queryRental;
 public boolean updateRental;
 
+public RentalView(){
+
+    title = new JLabel("Rentals");
+    title.setBounds(90, 150, 300, 100);
+    title.setFont(new Font("Calibri", Font.BOLD, 50));
+    add(title);
+}
 
 public RentalView(boolean queryRental, boolean updateRental){
     this.queryRental = queryRental;
@@ -18,10 +34,12 @@ public RentalView(boolean queryRental, boolean updateRental){
 }
 
 public void displayRentalInformation(int rentalID, int scooterID, Date startDate, double rentalCost){
-    System.out.println("Current rental: ");
-        System.out.println("Rental ID: " + rentalID);
-        System.out.println("Scooter ID: " + scooterID);
-        System.out.println("Start: " +startDate);
-        System.out.println("Cost: " + rentalCost);
+    
+    JLabel rentalInfoLabel = new JLabel(
+                "<html>Current rental:<br>Rental ID: " + rentalID + "<br>Scooter ID: " + scooterID + "<br>Start: "
+                        + startDate + "<br>Cost: " + rentalCost + "</html>");
+        rentalInfoLabel.setBounds(50, 250, 500, 100);
+        add(rentalInfoLabel);
+    
     }
 }
