@@ -30,10 +30,26 @@ public class ScooterModel {
     public void rentScooter(Scooter scooter) {
         // Implement logic to update scooter status for renting
         // ...
+        if(scooter.getStatus()=="In-Repair"||scooter.getStatus()=="Unavailable")
+        {
+            System.out.println("Scooter cannot be rented");
+        }
+        else
+        {
+            scooter.requestStateChange(new UnavailableState());
+        }
     }
 
     public void returnScooter(Scooter scooter) {
         // Implement logic to update scooter status for returning
         // ...
+        if(scooter.getStatus()=="Unavailable")
+        {
+            scooter.requestStateChange(new AvailableState());
+        }
+        else
+        {
+            System.out.println("Scooter cannot be returned!");
+        }
     }
 }

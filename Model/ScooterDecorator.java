@@ -14,6 +14,7 @@ public abstract class ScooterDecorator extends Scooter {
 public ScooterDecorator(Scooter decoratedScooter, Date startTime){
 this.decoratedScooter = decoratedScooter;
 this.startTime = startTime;
+}
 public ScooterDecorator(Scooter decoratedScooter){
     super(decoratedScooter.getScooterID(), decoratedScooter.getQrCode(),
     decoratedScooter.getCurrentPosition(), decoratedScooter.getStatus()); // constructor of superclass Scooter 
