@@ -50,7 +50,6 @@ public Node(){
 
     // Should these be in the controller?
 
-<<<<<<< HEAD
     // public Boolean rentScooter(int scooterID)
     // {
     //     // if () {
@@ -69,23 +68,3 @@ public Node(){
     }
     
 }
-=======
-    public boolean rentScooter(int scooterID){
-        for (Scooter scooter : availableScooters){
-            if(scooter.getScooterID() == scooterID && scooter.getStatus().equals("Available")){
-                scooter.setStatus("Rented");
-                return true;
-        }
-    } return false;
-} 
-
-    public boolean returnScooter(int scooterID){
-        for (Scooter scooter : availableScooters){
-            if(scooter.getScooterID() == scooterID && scooter.getStatus().equals("Repair")){
-                scooter.setStatus("Available");
-                return true;
-            }
-        } return false;        
-    }
-}  
->>>>>>> origin/week8
