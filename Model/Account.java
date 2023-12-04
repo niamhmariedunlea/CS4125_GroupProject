@@ -10,7 +10,11 @@ public class Account {
 
     public Account(){};
 
+<<<<<<< HEAD
+    public Account(int userID, String ulEmail, String password, String firstName, String lastName)
+=======
     public Account(String ulEmail, String password, String firstName, String lastName)
+>>>>>>> origin/week8
     {
         this.ulEmail = ulEmail;
         this.password = password;
