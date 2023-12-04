@@ -3,6 +3,8 @@
  * Date: October/November 2023
  */
 
+package View;
+
 import java.sql.Date;
 
 public class RentalView {

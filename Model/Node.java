@@ -49,17 +49,17 @@ public class Node {
 
     //Should these be in the controller?
 
-    public Boolean rentScooter(int scooterID)
-    {
-        if () {
-            return true;
-        }
-        else 
-        {
-            return false;
-        }
+    // public Boolean rentScooter(int scooterID)
+    // {
+    //     // if () {
+    //     //     return true;
+    //     // }
+    //     // else 
+    //     // {
+    //     //     return false;
+    //     // }
 
-    }
+    // }
 
     public void returnScooter(int scooterID)
     {
